@@ -9,13 +9,22 @@ body {
     background-size: 100% 110%;
 }
 
-
-/*
-.mess {
-    background-color: white;
-    color: #000;
+.btn {
+    width: 30%;
+    padding: 1rem 2rem;
+    background-color: rgb(196, 63, 63);
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 50px;
 }
-*/
+
+.btn:hover {
+    background-color: #27ae60;
+}
 
 .box {
     width: 400px;

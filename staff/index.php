@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$base_url = 'http://localhost/project/staff/';
+$base_url = 'http://localhost/college-project/staff/';
 $_SESSION['base_url'] = $base_url;
 $_SESSION['active_url'] = '';
 include 'helper/specialcharacter.php';

@@ -1,17 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 body {
     background-position: fixed;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     width: 90vh;
     height: 80vh;
-    background: linear-gradient(to top, rgb(0, 0, 0, 0.4)50%, rgba(0, 0, 0, 0.4)50%), url(2.webp);
+    background: linear-gradient(to top, rgb(0, 0, 0, 0.6)50%, rgba(0, 0, 0, 0.6)50%), url('../img/11.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 110%;

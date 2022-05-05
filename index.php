@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$base_url = 'http://localhost/project/';
+$base_url = 'http://localhost/college-project/';
 $_SESSION['base_url'] = $base_url;
 $_SESSION['active_url'] = '';
 include 'helper/specialcharacter.php';
@@ -39,6 +39,10 @@ if (isset($_GET['r'])) {
                             $_SESSION['active_url'] = 'track';
                             include 'controller/trackcontroller.php';
                             break;
+        case 'contact':
+                                $_SESSION['active_url'] = 'contact' ;
+                                include 'controller/contactcontroller.php';
+                                break;
          case 'logout':
                                 $_SESSION['active_url'] = 'logout';
                                 include 'controller/logoutcontroller.php';

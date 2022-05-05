@@ -15,8 +15,10 @@
     <div class="content"><br><br><br>
         <h2>Online Courier <br>Management<br> System</h2>
         <p class="par">It's a online courier management system named as 'koseli' which is a web based software developed by<br> Roshan Karki and Agraj Adhikari from Sungava College. <br>It is a project of 4th of BCA.
-        </p>
+      
+      </p>
     </div>
+    <button class="btn" onclick="window.location.href = '<?= $base_url ?>?r=contact';">Contact Us</button>
     <div class="box">
         <img src="img/koseli.png" class="avatar">
         <h1>Login Here....</h1>
