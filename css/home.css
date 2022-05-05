@@ -1,0 +1,189 @@
+body {
+    background-position: fixed;
+    font-family: sans-serif;
+    width: 90vh;
+    height: 80vh;
+    background: linear-gradient(to top, rgb(0, 0, 0, 0.6)50%, rgba(0, 0, 0, 0.6)50%), url('../img/11.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 110%;
+}
+
+
+/*
+.mess {
+    background-color: white;
+    color: #000;
+}
+*/
+
+.box {
+    width: 400px;
+    height: 550px;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 0 30px rgb(0, 0, 0);
+    color: #fff;
+    top: 16%;
+    right: 30px;
+    position: fixed;
+    box-sizing: border-box;
+    border-radius: 6%;
+    padding: 10px 30px;
+}
+
+.id {
+    width: 100px;
+    height: 30px;
+    border-radius: 10%;
+    position: absolute;
+    top: 123px;
+    left: calc(50% - 50px);
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #b62e31;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.id:hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #000;
+}
+
+h1 {
+    margin: 0;
+    padding: 55px 0 0px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.box p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.box input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.box input[type="text"],
+input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #d6491e;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #000;
+}
+
+.box a {
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+}
+
+h3 {
+    /*background-color: #b62e31;*/
+    margin: 0px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #3c627a, #6d3f80);
+}
+
+.box a h3:hover {
+    cursor: pointer;
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    color: rgb(0, 0, 0);
+}
+
+.box button {
+    background: rgb(196, 63, 63);
+    outline: none;
+    border: none;
+    font-size: 18px;
+    height: 40px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: -180px;
+    padding: 30px 55px;
+}
+
+.navbar {
+    width: 100px;
+    height: 100px;
+    padding: 0px 70px;
+}
+
+.icon {
+    width: 300px;
+    float: left;
+    height: 200px;
+    margin-left: 280px;
+    margin-top: -160px;
+}
+
+.logo {
+    color: #b62e31;
+    font-size: 70px;
+    font-family: Arial;
+    margin: 5px;
+    margin-left: -50px;
+    margin-top: 20px;
+}
+
+.content {
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #fff;
+    position: relative;
+}
+
+.par {
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    margin-top: 50px;
+}
+
+h2 {
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 5%;
+    letter-spacing: 2px;
+}
