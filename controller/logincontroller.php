@@ -54,7 +54,7 @@ try {
    
 
     } else {
-        $_SESSION['message']="No User found";
+        $_SESSION['message']="Username and Password is incorrect";
         $_SESSION['status']="error";
         include 'view/home.php';
         return;

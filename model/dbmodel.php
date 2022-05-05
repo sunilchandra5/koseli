@@ -48,6 +48,20 @@ function find_user_by_username($username)
     }
 }
 
+
+function find_user_by_email($email)
+{
+    $conn= db_connect();
+    $sql = "SELECT * FROM user where email='$email' limit 1";
+    $result = $conn->query($sql);
+    $conn->close();
+    if ($result->num_rows > 0) {
+        return $result;
+    } else {
+        return false;
+    }
+}
+
 function register_new_user($usertype, $name, $username, $password, $email,$phone, $address,$gender)
 {
 
@@ -104,5 +118,61 @@ else
 }
 
 }
+
+
+
+function lost($email)
+{
+   
+    $conn = db_connect();
+
+    $sql = "SELECT * FROM user where email='$email'limit 1";
+    $result = $conn->query($sql);
+    $conn->close();
+    if ($result->num_rows > 0) 
+    {
+        $row = $result->fetch_assoc();
+        return $row;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+
+function search($email)
+{
+$conn = db_connect();
+$sql = "SELECT * from user where email='$email'and usertype='1'";
+$result = $conn->query($sql);
+$conn->close();
+if($result)
+{
+    return $result;
+}
+else
+{
+    return false;
+}
+}
+
+
+
+function update_password($newpassword)
+{ $conn = db_connect();
+    $sql = "UPDATE `user` SET `password`='$newpassword' WHERE usertype='1'";
+$result = $conn->query($sql);
+if($result){
+        
+        $conn->close();
+        return $result;
+}
+else {
+        
+        $conn->close();
+        return false;
+}
+}
+
 
 ?>

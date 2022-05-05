@@ -22,6 +22,10 @@ if (isset($_GET['r'])) {
                 $_SESSION['active_url'] = 'lost';
                 include 'controller/lostcontroller.php';
                 break;
+        case 'newpass':
+                    $_SESSION['active_url'] = 'newpass';
+                    include 'controller/newpasscontroller.php';
+                    break;
          case 'newreg':
                     $_SESSION['active_url'] = 'newreg';
                     include 'controller/userregistrationcontroller.php';

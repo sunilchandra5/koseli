@@ -51,6 +51,17 @@ try
 
    $name = filterText($_POST['name']);
    $email =filterText($_POST['email']);
+   $valudate=find_user_by_email($email);
+   if ($valudate){
+      $_SESSION['message']="email already taken";
+      $_SESSION['status']="warning";
+       include 'view/registration.php';
+       return;
+   }
+
+
+
+
    $address = filterText($_POST['address']);
 
    $gender= filterText($_POST['gender']);
