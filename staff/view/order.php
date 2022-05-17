@@ -113,7 +113,7 @@ while ($row = $request->fetch_assoc()) {
 
         <?php if ($row['status'] == '3') {
                                     ?>
-							<td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=deliver&sid=<?php echo $sid; ?>>Delivered<i class="fa-2x fa-regular fa-circle-check"></i></a>
+							<td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=deliver&sid=<?php echo $row['id']; ?>>Delivered<i class="fa-2x fa-regular fa-circle-check"></i></a>
 </td>
                                 
                                 

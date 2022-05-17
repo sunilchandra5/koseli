@@ -173,7 +173,7 @@ form .button input:hover {
                     
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" name="email" value=<?php echo $row['email'] ?> required>
+                        <input type="email" name="email" value=<?php echo $row['email'] ?> required>
                     </div>
                     <div class="input-box">
                         <span class="details">Phone Number</span>

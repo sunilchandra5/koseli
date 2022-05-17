@@ -76,7 +76,7 @@ else
 function deliver($sid) 
 {
     $conn = db_connect();
-    $sql = "UPDATE `courier` SET `status`='4' WHERE sid=$sid";
+    $sql = "UPDATE `courier` SET `status`='4' WHERE id=$sid";
 $result = $conn->query($sql);
 if($result){
         

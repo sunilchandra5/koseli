@@ -17,15 +17,16 @@ body {
     white-space: nowrap;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(255, 255, 255);
-}
-
 marquee {
     position: fixed;
     top: 10%;
     left: 22.5%;
     font-size: 50px;
+}
+
+.container video {
+    position: absolute;
+    top: 60%;
+    left: 22.5%;
+    object-fit: cover;
 }
