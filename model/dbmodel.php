@@ -16,7 +16,7 @@ function db_connect() {
 }
 
 
-function db_login($username, $password) {
+function user_login($username, $password) {
 
     $conn = db_connect();
 
@@ -33,6 +33,45 @@ function db_login($username, $password) {
         return false;
     }
 }
+
+
+function staff_login($username, $password) {
+
+    $conn = db_connect();
+
+    $sql = "SELECT * FROM staff where username='$username' and password='$password' limit 1";
+    $result = $conn->query($sql);
+    $conn->close();
+    if ($result->num_rows > 0) 
+    {
+        $row = $result->fetch_assoc();
+        return $row;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+
+
+function admin_login($username, $password) {
+
+    $conn = db_connect();
+
+    $sql = "SELECT * FROM admin where username='$username' and password='$password' limit 1";
+    $result = $conn->query($sql);
+    $conn->close();
+    if ($result->num_rows > 0) 
+    {
+        $row = $result->fetch_assoc();
+        return $row;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+
 
  
 function find_user_by_username($username)
@@ -62,12 +101,12 @@ function find_user_by_email($email)
     }
 }
 
-function register_new_user($usertype, $name, $username, $password, $email,$phone, $address,$gender)
+function register_new_user($name, $username, $password, $email,$phone, $address,$gender)
 {
 
     $conn = db_connect();
-    $stmt = $conn->prepare("INSERT INTO user (usertype, name,username,password,email,phone,address,gender) VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bind_param ('isssssss', $usertype, $name, $username, $password, $email,$phone, $address,$gender);
+    $stmt = $conn->prepare("INSERT INTO user (name,username,password,email,phone,address,gender) VALUES (?,?,?,?,?,?,?)");
+    $stmt->bind_param ('sssssss', $name, $username, $password, $email,$phone, $address,$gender);
     
 
 
@@ -83,12 +122,14 @@ function register_new_user($usertype, $name, $username, $password, $email,$phone
     }
 }
 
-function send_courier($user,$sname,$semail,$sphone,$saddress,$slocation,$rname,$remail,$rphone,$raddress,$rlocation,$weight,$date,$target)
-{
-    $conn =db_connect();
-    $stm = $conn->prepare("INSERT INTO courier (uid,sname,semail,sphone,saddress,slocation,rname,remail,rphone,raddress,rlocation,weight,date,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stm->bind_param('issssssssssiss',$user, $sname, $semail, $sphone, $saddress, $slocation, $rname, $remail, $rphone, $raddress, $rlocation, $weight, $date, $target);
 
+
+function send_courier($user,$ordername,$rname,$remail,$rphone,$raddress,$weight,$date,$target)
+{
+  
+    $conn = db_connect();
+    $stmt = $conn->prepare("INSERT INTO courier (uid,ordername,rname,remail,rphone,raddress,weight,date,image) VALUES (?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param ('isssssiss', $user, $orderame, $rname, $remail,$rphone, $raddress,$weight,$date,$target);
     $result = $stm->execute();
     if ($result){
         $stm->close();
@@ -143,7 +184,7 @@ function lost($email)
 function search($email)
 {
 $conn = db_connect();
-$sql = "SELECT * from user where email='$email'and usertype='1'";
+$sql = "SELECT * from user where email='$email'";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -158,9 +199,9 @@ else
 
 
 
-function update_password($newpassword)
+function update_password($newpassword,$email)
 { $conn = db_connect();
-    $sql = "UPDATE `user` SET `password`='$newpassword' WHERE usertype='1'";
+    $sql = "UPDATE `user` SET `password`='$newpassword' WHERE `email`='$email'";
 $result = $conn->query($sql);
 if($result){
         

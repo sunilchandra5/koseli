@@ -79,7 +79,7 @@ if($request)
 <th> Status</th>
         
 </tr><?php
-while ($row = $request->fetch_assoc()) {
+if($row = $request->fetch_assoc()) {
     $i++;
     $uid= $row['uid'];
     ?>
@@ -136,19 +136,21 @@ switch($row['status']) {
 </tr>
 <?php
 }
+else {?>
+    <tr>
+    <th>NO data found</th>
+         
+ </tr><?php
+    
+}
+
 ?>
 
 </table>
 
 
+
 </div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-

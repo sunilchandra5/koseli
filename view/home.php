@@ -25,11 +25,12 @@
         <br><br><br><br>
         <form action="<?= $base_url ?>?r=login" method="post" >
           
-      <!--<select name="usertype"class="id">
-                <option value="1">User</option>
-                 <option value="2">Staff</option>
-                 <option value="3">Admin</option>
-            </select> -->
+      <select name="usertype"class="id">
+                <option value="user">User</option>
+                 <option value="staff">Staff</option>
+                 <option value="admin">Admin</option>
+</select>
+          
             <p>Username</p>
             <input type="text" name="username" placeholder="Enter Username" required>
             <p>Password</p>

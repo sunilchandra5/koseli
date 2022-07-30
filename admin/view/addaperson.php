@@ -135,6 +135,28 @@ form .button input:hover {
 
         </style>
 
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <?php
+ if(isset($_SESSION['message'])&& $_SESSION['message'] !='')
+ {
+     ?>
+       <script>
+        swal({
+  title: "<?php echo $_SESSION['message'];?>",
+  //text: "You clicked the button!",
+  icon: "<?php echo $_SESSION['status'];?>",
+  button: "ok",
+});
+        </script>
+     <?php
+     unset($_SESSION['message']);
+ } 
+  ?>
+  
+
 </head>
 
 <body>
@@ -168,7 +190,7 @@ form .button input:hover {
                     </div>
                     <div class="input-box">
                         <span class="details">Phone Number</span>
-                        <input type="text" name="phone" placeholder="person's number" required>
+                        <input type="number" name="phone" max-length="10" placeholder="person's number" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>

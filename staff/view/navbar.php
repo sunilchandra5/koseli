@@ -47,12 +47,12 @@
                             </span>
                             <span>My Orders</span></a>
                     </li>
-                    <li>
+                  <!--  <li>
                         <a href="<?= $base_url ?>?r=notification"><span class="icon">
                                 <ion-icon name="notifications-circle-sharp"></ion-icon>
                             </span>
                             <span>Notification</span></a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="<?= $base_url ?>?r=logout"><span class="icon">
                                 <ion-icon name="log-out-sharp"></ion-icon>

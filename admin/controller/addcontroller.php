@@ -47,13 +47,28 @@ try
        return;
    }
    $name = filterText($_POST['name']);
+          
+if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
+    $_SESSION['message']="Name doesnot have numbers in them";
+        $_SESSION['status']="warning";
+         include 'view/addaperson.php';
+         return;
+    }
    $email =filterText($_POST['email']);
    $address = filterText($_POST['address']);
    $phone = filterText($_POST['phone']);
-   $gender= filterText($_POST['gender']);
-   $usertype = 2 ;
+   if (strlen($phone) < 10 || strlen($phone) > 10) 
+   {
+    $_SESSION['message']="Phone number must be 10 character";
+    $_SESSION['status']="warning";
+    include 'view/addaperson.php';
+    return;
+}
+   
 
-   $user = register_new_user($usertype, $name, $username, $password, $email,$phone, $address,$gender);
+   $gender= filterText($_POST['gender']);
+  
+   $user = register_new_staff($name, $username, $password, $email,$phone, $address,$gender);
    if ($user) {
     $_SESSION['message']="Staff added successfully";
     $_SESSION['status']="success";

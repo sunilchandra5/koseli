@@ -6,6 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Courier</title>
+
+    <link href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
+    type="text/css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   
+
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#date_picker").datepicker({
+                minDate: 0
+            });
+        });
+    </script>
+
+
     <link rel="stylesheet" type="text/css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -54,6 +70,9 @@ echo $_SESSION['user']['saddress'] ;
         <form action="<?= $base_url ?>?r=sendcourier" method="post" enctype="multipart/form-data">
 
             <table>
+            <td>Name Of the Order:</td>
+                    <td><input type="text" name="ordername" required></td>
+
 
                 <tr>
                     <td colspan="4" >
@@ -95,7 +114,7 @@ echo $_SESSION['user']['saddress'] ;
                     <td><input type="number" name="sphone" value="<?php echo $_SESSION['user']['sphone'] ; ?>" readonly></td>
 
                     <td>PhoneNo.:</td>
-                    <td><input type="number" name="rphone" placeholder="Receiver number" required></td>
+                    <td><input type="text" maxlength="10" name="rphone" placeholder="Receiver number" required></td>
                 </tr>
                 <tr>
                     <td>Address:</td>
@@ -104,19 +123,13 @@ echo $_SESSION['user']['saddress'] ;
                     <td>Address:</td>
                     <td><input type="text" name="raddress" placeholder="Receiver address" required></td>
                 </tr>
-                <tr>
-                    <td>Geo-location:</td>
-                    <td><input type="text" name="slocation" placeholder="eg-27.571883,84.533984" required></td>
-
-                    <td>Geo-location:</td>
-                    <td><input type="text" name="rlocation" placeholder="eg-27.571883,84.533984" required></td>
-                </tr>
+               
 
                 <tr>
                     <td>Weight:</td><br><br>
-                    <td><input type="number" name="weight" placeholder="Weights in kg" required></td>
+                    <td><input type="number" name="weight" placeholder="Weights in kg" min="0" oninput="this.value = Math.abs(this.value)" required></td>
                     <td>Date:</td>
-                    <td><input type="date" name="date"></td>
+                    <td><input type="text" id="date_picker" name="date"></td>
 
                 </tr>
                 <tr>

@@ -1,8 +1,10 @@
 <?php
 
-if (!function_exists("filterText")) {
+if (!function_exists("filtertext")) {
 
-    function filtertext($data) {
+    function filtertext($data) 
+    {
+        $data = str_replace(' ', '', $data);
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -10,13 +12,3 @@ if (!function_exists("filterText")) {
     }
 
 }
-/*
-if (!function_exists("number"))
-{
-    function number($dat){
-
-    
-    $dat=preg_match("/^([0-9]{10})$/",$dat));
-    return $dat;
-}
-}*/

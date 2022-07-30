@@ -20,7 +20,7 @@ function db_connect() {
 function find_user_by_username($email)
 {
     $conn= db_connect();
-    $sql = "SELECT * FROM user where email='$email' limit 1";
+    $sql = "SELECT * FROM staff where email='$email' limit 1";
     $result = $conn->query($sql);
     $conn->close();
     if ($result->num_rows > 0) {
@@ -30,12 +30,12 @@ function find_user_by_username($email)
     }
 }
 
-function register_new_user($usertype, $name, $username, $password, $email,$phone, $address,$gender)
+function register_new_staff($name, $username, $password, $email,$phone, $address,$gender)
 {
 
     $conn = db_connect();
-    $stmt = $conn->prepare("INSERT INTO user (usertype, name,username,password,email,phone,address,gender) VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bind_param ('isssssss', $usertype, $name, $username, $password, $email,$phone, $address,$gender);
+    $stmt = $conn->prepare("INSERT INTO staff (name,username,password,email,phone,address,gender) VALUES (?,?,?,?,?,?,?)");
+    $stmt->bind_param ('sssssss', $name, $username, $password, $email,$phone, $address,$gender);
     
 
 
@@ -55,7 +55,7 @@ function register_new_user($usertype, $name, $username, $password, $email,$phone
 function view_users()
 {
 $conn = db_connect();
-$sql = "SELECT * from user where usertype='1'";
+$sql = "SELECT * from user";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -73,7 +73,7 @@ else
 function view_staff()
 {
 $conn = db_connect();
-$sql = "SELECT * from user where usertype='2'";
+$sql = "SELECT * from staff";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -197,7 +197,7 @@ function delete_courier($id) {
 function editstaff($id)
 {
 $conn = db_connect();
-$sql = "SELECT * from user where id='$id'";
+$sql = "SELECT * from staff where id='$id'";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -214,11 +214,11 @@ else
 
 
 
-function updatestaff($id,$usertype, $name, $username, $password, $email,$phone, $address,$gender)
+function updatestaff($id, $name, $username, $password, $email,$phone, $address,$gender)
 {
     $conn = db_connect();
-    $stmt = $conn->prepare("update user set usertype = ? , name = ? , username = ? , password = ?, email = ? , phone = ? , address = ? , gender = ? where id = ?");
-    $stmt->bind_param('isssssssi',$usertype, $name, $username, $password, $email,$phone, $address,$gender,$id);
+    $stmt = $conn->prepare("update staff set name = ? , username = ? , password = ?, email = ? , phone = ? , address = ? , gender = ? where id = ?");
+    $stmt->bind_param('sssssssi',$name, $username, $password, $email,$phone, $address,$gender,$id);
     $result = $stmt->execute();
     if ($result) {
         $stmt->close();

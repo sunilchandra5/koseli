@@ -84,12 +84,12 @@
                             <span>Users</span></a>
                     </li>
                  
-                    <li>
+                   <!-- <li>
                         <a href="<?= $base_url ?>?r=notification"><span class="icon">
                                 <ion-icon name="notifications-circle-sharp"></ion-icon>
                             </span>
                             <span>Notification</span></a>
-                    </li>
+                    </li>   -->
                     <li>
                         <a href="<?= $base_url ?>?r=bin"><span class="icon">
                         <ion-icon name="trash-bin"></ion-icon>

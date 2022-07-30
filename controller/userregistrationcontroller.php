@@ -28,6 +28,16 @@ try
         return;
     }
 
+    $name = filtertext($_POST['name']);
+
+       
+if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
+    $_SESSION['message']="Name doesnot have numbers in them";
+        $_SESSION['status']="warning";
+         include 'view/registration.php';
+         return;
+    }
+
      //checking if username is already exists.
      $username= filtertext($_POST['username']);
      $valudate=find_user_by_username($username);
@@ -39,6 +49,7 @@ try
      }
 
    //checking password.
+   // for encript eg:-$password = sha1($_POST['pass']);
    $cpassword = filtertext($_POST['confirmpassword']);
    if ($password != $cpassword) {
     $_SESSION['message']="password and confirm password is not matched";
@@ -46,11 +57,18 @@ try
        include 'view/registration.php';
        return;
    }
-   $phone = filterText($_POST['phone']);
+   $phone = filtertext($_POST['phone']);
+   if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
+    $_SESSION['message']="Phone number invalid";
+        $_SESSION['status']="warning";
+         include 'view/registration.php';
+         return;
+    }
+
    
 
-   $name = filterText($_POST['name']);
-   $email =filterText($_POST['email']);
+ 
+   $email =filtertext($_POST['email']);
    $valudate=find_user_by_email($email);
    if ($valudate){
       $_SESSION['message']="email already taken";
@@ -62,12 +80,11 @@ try
 
 
 
-   $address = filterText($_POST['address']);
+   $address = filtertext($_POST['address']);
 
-   $gender= filterText($_POST['gender']);
-   $usertype = 1 ;
+   $gender= filtertext($_POST['gender']);
 
-   $user = register_new_user($usertype, $name, $username, $password, $email,$phone, $address,$gender);
+   $user = register_new_user($name, $username, $password, $email,$phone, $address,$gender);
    if ($user) {
     $_SESSION['message']="you have sucessfully registered";
         $_SESSION['status']="success";

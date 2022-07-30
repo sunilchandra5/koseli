@@ -17,48 +17,75 @@ try {
     }
     $username = filtertext($_POST['username']);
     $password = filtertext($_POST['password']);
+    $usertype = $_POST['usertype'];
+    switch ($usertype){
+        case 'user':
+            $user = user_login($username, $password);  
+            if ($user) {
+                $_SESSION['user']['login'] = TRUE;
+                $_SESSION['user']['userid'] = $user['id'];
+                $_SESSION['user']['username'] = $user['username'];
+                $_SESSION['user']['sname'] = $user['name'];
+                $_SESSION['user']['semail'] = $user['email'];
+                $_SESSION['user']['sphone'] = $user['phone'];
+                $_SESSION['user']['saddress'] = $user['address'];
+                redirect('site');
+            }
+            else{
+                
+            $_SESSION['message']="Username and Password is incorrect";
+            $_SESSION['status']="error";
+            include 'view/home.php';
+            return;
+            }
+            break;
 
+        case "staff":
+            $staff = staff_login($username, $password);  
+            if ($staff) {
+           
+              $_SESSION['staff']['login'] = TRUE;
+              $_SESSION['staff']['user_id'] = $user['id'];
+              $_SESSION['staff']['user_name'] = $user['username'];
+              header("location:staff/");
+        }
+        else{
+            
+            $_SESSION['message']="Username and Password is incorrect";
+            $_SESSION['status']="error";
+            include 'view/home.php';
+            return;
+        }
+        break;
 
-
-    $user = db_login($username, $password);
-    if ($user) {
-        
-
-        if($user["usertype"]==0)
-        {
+        case "admin":
+            
+        $admin = admin_login($username, $password);  
+        if ($admin) {
+           
             $_SESSION['admin']['login'] = TRUE;
             $_SESSION['admin']['user_id'] = $user['id'];
             $_SESSION['admin']['user_name'] = $user['username'];
             header("location:admin/"); 
-           
         }
-        
-        if($user["usertype"]==1)
-        {
-            $_SESSION['user']['login'] = TRUE;
-            $_SESSION['user']['userid'] = $user['id'];
-            $_SESSION['user']['username'] = $user['username'];
-            $_SESSION['user']['sname'] = $user['name'];
-            $_SESSION['user']['semail'] = $user['email'];
-            $_SESSION['user']['sphone'] = $user['phone'];
-            $_SESSION['user']['saddress'] = $user['address'];
-            redirect('site');
+        else{
+            
+            $_SESSION['message']="Username and Password is incorrect";
+            $_SESSION['status']="error";
+            include 'view/home.php';
+            return;
         }
-        if($user["usertype"]==2)
-        {
-            $_SESSION['staff']['login'] = TRUE;
-            $_SESSION['staff']['user_id'] = $user['id'];
-            $_SESSION['staff']['user_name'] = $user['username'];
-            header("location:staff/");
-        }
-   
+        break;
+         
 
-    } else {
-        $_SESSION['message']="Username and Password is incorrect";
-        $_SESSION['status']="error";
-        include 'view/home.php';
-        return;
-    }
+        default:
+            $_SESSION['message']="Username and Password is incorrect";
+            $_SESSION['status']="error";
+            include 'view/home.php';
+            return;
+        }
+
+
 } catch (Exception $ex) {
     include 'controller/ErrorController.php';
 }

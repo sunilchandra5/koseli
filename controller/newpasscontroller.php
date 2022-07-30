@@ -4,6 +4,7 @@ $email = "";
 if(isset($_GET["email"]))
 {
 	$email = $_GET["email"];
+    $_SESSION['email']=$email;
 }
 
 if(empty($_POST))
@@ -38,8 +39,8 @@ try {
     redirect(lost);
        return;
    }
-
-$new=update_password($newpassword);
+$email=$_SESSION['email'];
+$new=update_password($newpassword,$email);
 if ($new) {
     $_SESSION['message']="Password changed sucessfully";
     $_SESSION['status']="success";
