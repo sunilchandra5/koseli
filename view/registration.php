@@ -10,6 +10,19 @@
 <script type="text/javascript" src="controller/javascript/validation.js">
   
     </script>
+
+    
+    <script type="text/javascript">
+        function check() {
+            var len = document.form.password.value.length;
+            if (len > 7){
+                document.getElementById("perror").innerHTML ="<span style='color: green;'>Gooooooood</span>";
+            } 
+            else {
+                document.getElementById("perror").innerHTML ="Poor";
+            }
+        }
+        </script>
 </head>
 
 <body>
@@ -36,7 +49,7 @@
                     <div class="input-box">
                         <span class="details">Password</span><span id="pass"></span>
                         <span id='perror' style="color: red;"></span>
-                        <input type="password" name="password"  placeholder="Enter your password">
+                        <input type="password" name="password"  placeholder="Enter your password"  oninput="check()">
                     </div>
                     <div class="input-box">
                         <span class="details">Confirm Password</span>

@@ -44,6 +44,10 @@ function validation() {
     }
     var phone = document.forms["form"]["phone"].value;
     var phoneformat = /^([8-9]{2})*([0-9]{8})*$/;
+    if (email.trim() == "") {
+        document.getElementById('pherror').innerHTML = "Phone number requiered";
+        return false;
+    }
     if (!phoneformat.test(phone)) {
         document.getElementById('pherror').innerHTML = "invalid phone";
         return false;
