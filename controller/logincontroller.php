@@ -45,8 +45,8 @@ try {
             if ($staff) {
            
               $_SESSION['staff']['login'] = TRUE;
-              $_SESSION['staff']['user_id'] = $user['id'];
-              $_SESSION['staff']['user_name'] = $user['username'];
+              $_SESSION['staff']['user_id'] = $staff['id'];
+              $_SESSION['staff']['user_name'] = $staff['username'];
               header("location:staff/");
         }
         else{
@@ -64,8 +64,8 @@ try {
         if ($admin) {
            
             $_SESSION['admin']['login'] = TRUE;
-            $_SESSION['admin']['user_id'] = $user['id'];
-            $_SESSION['admin']['user_name'] = $user['username'];
+            $_SESSION['admin']['user_id'] = $admin['id'];
+            $_SESSION['admin']['user_name'] = $admin['username'];
             header("location:admin/"); 
         }
         else{

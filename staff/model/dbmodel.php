@@ -19,7 +19,7 @@ function db_connect() {
 function view_courier()
 {
 $conn = db_connect();
-$sql = "SELECT * from courier WHERE status='1'";
+$sql = "SELECT * from courier INNER JOIN user ON courier.uid=user.id WHERE courier.status='1'";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -34,10 +34,11 @@ else
 }
 
 
+
 function accept($sid,$uid) 
 {
     $conn = db_connect();
-    $sql = "UPDATE `courier` SET `sid`='$sid', `status`='3'  WHERE id='$uid'";
+    $sql = "UPDATE courier SET sid='$sid', status='3'  WHERE oid='$uid'";
  $result = $conn->query($sql);
 if($result){
         
@@ -55,7 +56,8 @@ else {
 function view_order($sid)
 {
 $conn = db_connect();
-$sql = "SELECT * from courier WHERE sid='$sid'";
+
+$sql = "SELECT * from courier JOIN user ON courier.uid=user.id WHERE courier.sid='$sid'";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -76,7 +78,7 @@ else
 function deliver($sid) 
 {
     $conn = db_connect();
-    $sql = "UPDATE `courier` SET `status`='4' WHERE id=$sid";
+    $sql = "UPDATE courier SET status='4' WHERE oid=$sid";
 $result = $conn->query($sql);
 if($result){
         
@@ -97,7 +99,7 @@ else {
 
 function delete($id) {
     $conn = db_connect();
-    $sql = "Delete from courier where id=$id";
+    $sql = "Delete from courier where oid=$id";
     $conn->query($sql);
     if ($conn->affected_rows > 0) {
         $conn->close();

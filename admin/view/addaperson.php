@@ -190,7 +190,7 @@ form .button input:hover {
                     </div>
                     <div class="input-box">
                         <span class="details">Phone Number</span>
-                        <input type="number" name="phone" max-length="10" placeholder="person's number" required>
+                        <input type="text" name="phone" maxlength="10" placeholder="person's number" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
@@ -209,7 +209,7 @@ form .button input:hover {
 
                 </div>
                 <div class="button">
-                    <input type="submit" value="Add">
+                    <input type="submit" value="Add" onclick="return confirm('Are you sure you want to Register?')">
                 </div>
             </form>
         </div>

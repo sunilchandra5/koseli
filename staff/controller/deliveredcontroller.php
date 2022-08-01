@@ -12,12 +12,12 @@ if($accept)
 {
     $_SESSION['message']="Delivered message has been sent to the user";
     $_SESSION['status']="success";
-    redirect(order);
+    redirect('order');
 }
 else
 {
     $_SESSION['message']="Data is not approved";
     $_SESSION['status']="error";
-   redirect(order);
+   redirect('order');
 }
 ?>

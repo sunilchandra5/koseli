@@ -83,57 +83,61 @@ tr:hover {
     $request = view_order($sid);
 if($request)
     $i=0;
-?>
+    ?>
+
 <table style=text-align:center>
-   <tr>
-    
+<tr>
+    <th colspan='2'></th>
     <th colspan='3'>Sender</th>
     <th colspan='3'>Receiver</th>
 </tr>
    <tr>
-        <th> Product Name</th>
-        <th> Product Image</th>
+        <th> Order <br>Name</th>
+        <th> Product <br>Image</th>
         <th> Name</th>
         <th> Address</th>
         <th> Phone</th>
         <th> Name</th>
         <th> Address</th>
+        <th> Phone </th>
         <th> Weight</th>
-        <th> Product Image</th>
-<th> Status</th>
+        <th> Action</th>
         
-</tr><?php
+</tr>
+<?php
 while ($row = $request->fetch_assoc()) {
-    $i++;
-    ?>
+   $i++;
+   ?>
     <tr>
-       
-        <td><?php echo $i; ?></td>
-        <td><?php echo $row['sname']; ?></td>
-        <td><?php echo $row['saddress']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
+       <td><?php echo $row['ordername']; ?></td>
+       <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['address']; ?></td>
+        <td><?php echo $row['phone']; ?></td>
         <td><?php echo $row['rname']; ?></td>
         <td><?php echo $row['raddress']; ?></td>
+        <td><?php echo $row['rphone']; ?></td>
         <td><?php echo $row['weight']; ?>kg</td>
-        <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
-
+        
         <?php if ($row['status'] == '3') {
                                     ?>
-							<td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=deliver&sid=<?php echo $row['id']; ?>>Delivered<i class="fa-2x fa-regular fa-circle-check"></i></a>
+							<td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=deliver&sid=<?php echo $row['oid']; ?>>Delivered<i class="fa-2x fa-regular fa-circle-check"></i></a>
 </td>
                                 
                                 
                                 <?php
                                 } else {
                                     ?>							
-                                <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=delete&id=<?php echo $row['id'] ?>>Delete<i class="fa-2x fa-regular fa-circle-check"></i></a>
+                                <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=delete&id=<?php echo $row['oid'] ?>>Delete<i class="fa-2x fa-regular fa-circle-check"></i></a>
 </td>
 							<?php
                                 } ?>
 
 </tr>
 <?php
-}
+    }
+
+
 ?>
 
 </table>

@@ -20,13 +20,13 @@ if($del)
 {
     $_SESSION['message']="Data deleted successfully";
     $_SESSION['status']="success";
-    redirect(order);
+    redirect('order');
 }
 else
 {
     $_SESSION['message']="Data not deleted successfully";
     $_SESSION['status']="error";
-    redirect(order);
+    redirect('order');
 }
 
 

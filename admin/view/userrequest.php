@@ -83,47 +83,39 @@ tr:hover {
 
 
 
-  
-    <div class="user">
-    <h1>User Requests</h1>
-</div>
-<div class="head">
-    <h2><pre>Sender                                                Receiver</pre></h2>
-</div>
-
     <div class="box">
     <?php
     $request = view_courier();
 if($request)
-    $i=0;
+   
 ?>
 <table style=text-align:center>
    <tr>
-   <th>S.N</th>
-        <th> Name</th>
-        <th> Address</th>
+   <th> Order_Id</th>
+        <th> Order Name</th>
+        <th> To-</th>
         <th> Phone</th>
-        <th> Name</th>
-        <th> Address</th>
         <th> Weight</th>
-        <th> Product Image</th>
-<th> Action</th>
+        <th> Sender<br>Details</th>
+        <th> Image</th>
+        <th> Action</th>
         
 </tr><?php
 while ($row = $request->fetch_assoc()) {
-    $i++;
-    $uid= $row['id'];
+  
+    $uid= $row['oid'];
     ?>
     <tr>
        
-        <td><?php echo $i; ?></td>
-        <td><?php echo $row['sname']; ?></td>
-        <td><?php echo $row['saddress']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
+    <td><?php echo $row['oid']; ?></td>
+        <td><?php echo $row['ordername']; ?></td>
+        
         <td><?php echo $row['rname']; ?></td>
-        <td><?php echo $row['raddress']; ?></td>
-        <td><?php echo $row['weight']; ?>kg</td>
-        <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
+        <td><?php echo $row['rphone']; ?></td>
+        <td><?php echo $row['weight']  ; ?>KG</td>
+        <td><a style="color:black" href="<?php echo $base_url; ?>?r=sender&uid=<?php echo $row['id']; ?>"> Sender.. </a></td>
+        
+        <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td> 
         <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=accept&uid=<?php echo $uid; ?>><i class="fa-2x fa-solid fa-user-check"></i></a><br><br>
         <a style="color:" white href=<?php echo $base_url; ?>?r=reject&uid=<?php echo $uid; ?>><i class="fa-2x fa-solid fa-ban"></i></a></td>
     

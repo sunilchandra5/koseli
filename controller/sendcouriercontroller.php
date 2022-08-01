@@ -9,7 +9,6 @@ if (empty($_POST)) {
 try
 {  
    $ordername = filterText($_POST['ordername']);
-   
    $weight =filterText($_POST['weight']);
    $rname = filterText($_POST['rname']);
    $remail =filterText($_POST['remail']);

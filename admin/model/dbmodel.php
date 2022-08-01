@@ -93,7 +93,7 @@ else
 function view_courier()
 {
 $conn = db_connect();
-$sql = "SELECT * from courier WHERE status='0'";
+$sql = "SELECT * from courier INNER JOIN user ON courier.uid=user.id WHERE courier.status='0'";
 $result = $conn->query($sql);
 $conn->close();
 if($result)
@@ -109,7 +109,21 @@ else
 
 
 
-function delete($id) {
+function deletestaff($id) {
+    $conn = db_connect();
+    $sql = "Delete from staff where id=$id";
+    $conn->query($sql);
+    if ($conn->affected_rows > 0) {
+        $conn->close();
+        return TRUE;
+    } else {
+        $conn->close();
+        return false;
+    }
+}
+
+
+function deleteuser($id) {
     $conn = db_connect();
     $sql = "Delete from user where id=$id";
     $conn->query($sql);
@@ -124,7 +138,7 @@ function delete($id) {
 
 function accept($uid) {
     $conn = db_connect();
-    $sql = "UPDATE `courier` SET `status`='1' WHERE id=$uid";
+    $sql = "UPDATE `courier` SET `status`='1' WHERE oid=$uid";
 $result = $conn->query($sql);
 if($result){
         
@@ -141,7 +155,7 @@ else {
 
 function reject($uid) {
     $conn = db_connect();
-    $sql = "UPDATE `courier` SET `status`='2' WHERE id=$uid";
+    $sql = "UPDATE `courier` SET `status`='2' WHERE oid=$uid";
 $result = $conn->query($sql);
 if($result){
         
@@ -180,7 +194,7 @@ else
 
 function delete_courier($id) {
     $conn = db_connect();
-    $sql = "Delete from courier where id=$id";
+    $sql = "Delete from courier where oid=$id";
     $conn->query($sql);
     if ($conn->affected_rows > 0) {
         $conn->close();
@@ -232,12 +246,60 @@ function updatestaff($id, $name, $username, $password, $email,$phone, $address,$
 }
 
 
+function editusers($id)
+{
+$conn = db_connect();
+$sql = "SELECT * from user where id='$id'";
+$result = $conn->query($sql);
+$conn->close();
+if($result)
+{
+    return $result;
+}
+else
+{
+    return false;
+}
+
+}
 
 
 
+function updateusers($id, $name, $username, $password, $email,$phone, $address,$gender)
+{
+    $conn = db_connect();
+    $stmt = $conn->prepare("update user set name = ? , username = ? , password = ?, email = ? , phone = ? , address = ? , gender = ? where id = ?");
+    $stmt->bind_param('sssssssi',$name, $username, $password, $email,$phone, $address,$gender,$id);
+    $result = $stmt->execute();
+    if ($result) {
+        $stmt->close();
+        $conn->close();
+        return $result;
+    } else {
+        $stmt->close();
+        $conn->close();
+        return false;
+    }
+}
 
 
 
+function sender($id)
+{
+$conn = db_connect();
+$sql = "SELECT * from user where id='$id'";
+$result = $conn->query($sql);
+$conn->close();
+if($result)
+{
+    return $result;
+}
+else
+{
+    return false;
+}
+
+}
 
 
 

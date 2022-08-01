@@ -107,6 +107,9 @@ function register_new_user($name, $username, $password, $email,$phone, $address,
     $conn = db_connect();
     $stmt = $conn->prepare("INSERT INTO user (name,username,password,email,phone,address,gender) VALUES (?,?,?,?,?,?,?)");
     $stmt->bind_param ('sssssss', $name, $username, $password, $email,$phone, $address,$gender);
+    
+
+
     $result = $stmt->execute();
     if ($result) {
         $stmt->close();
@@ -125,16 +128,16 @@ function send_courier($user,$ordername,$rname,$remail,$rphone,$raddress,$weight,
 {
   
     $conn = db_connect();
-    $stmt = $conn->prepare("INSERT INTO courier (uid,ordername,rname,remail,rphone,raddress,weight,date,image) VALUES (?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param ('isssssiss',$user,$ordername,$rname,$remail,$rphone,$raddress,$weight,$date,$target);
-    $result = $stmt->execute();
+    $stm = $conn->prepare("INSERT INTO courier (uid,ordername,rname,remail,rphone,raddress,weight,date,image) VALUES (?,?,?,?,?,?,?,?,?)");
+    $stm->bind_param ('isssssiss', $user, $ordername, $rname, $remail,$rphone, $raddress,$weight,$date,$target);
+    $result = $stm->execute();
     if ($result){
-        $stmt->close();
+        $stm->close();
         $conn->close();
         return $result;
     }
     else {
-        $stmt->close();
+        $stm->close();
         $conn->close();
         return false;
     }

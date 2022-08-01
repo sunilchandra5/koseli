@@ -1,6 +1,3 @@
-<?php
-    include 'model/dbmodel.php';
-    ?>
 
 
 <!DOCTYPE html>
@@ -83,7 +80,7 @@ tr:hover {
 
     <div class="box">
     <?php
-    $users = view_users();
+   
 if($users)
 $i=0;
 echo"

@@ -81,29 +81,25 @@ if($request)
 <table style=text-align:center>
    <tr>
    <th>S.N</th>
-        <th> Name</th>
-        <th> Address</th>
-        <th> Phone</th>
-        <th> Name</th>
-        <th> Address</th>
-        <th> Weight</th>
-        <th> Product Image</th>
+        <th> Order-ID</th>
+        <th> Order Name</th>
+        <th> Receiver Name</th>
+        <th> Image</th>
+        
 <th> Action</th>
         
 </tr><?php
 while ($row = $request->fetch_assoc()) {
     $i++;
-    $uid= $row['id'];
+    $uid= $row['oid'];
     ?>
     <tr>
        
         <td><?php echo $i; ?></td>
-        <td><?php echo $row['sname']; ?></td>
-        <td><?php echo $row['saddress']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
+        <td><?php echo $row['oid']; ?></td>
+        <td><?php echo $row['ordername']; ?></td>
         <td><?php echo $row['rname']; ?></td>
-        <td><?php echo $row['raddress']; ?></td>
-        <td><?php echo $row['weight']; ?>kg</td>
+        
         <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
         <td bgcolor=#d6491e ><a style="color:" white href=  <?php echo $base_url; ?>?r=delete&id=<?php echo $uid; ?>><i class="fa-2x fa-solid fa-ban"></i></a></td>
     

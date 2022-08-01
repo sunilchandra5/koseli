@@ -14,7 +14,7 @@ if(isset($_GET["id"]))
 	$id = $_GET["id"];
 }
 
-$del = delete($id);
+$del = deletestaff($id);
 if($del)
 {
     $_SESSION['message']="Data deleted successfully";

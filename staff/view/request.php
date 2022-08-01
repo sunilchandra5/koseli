@@ -114,7 +114,7 @@ if($request)
  <?php
 while ($row = $request->fetch_assoc()) {
     $i++;
-    $uid= $row['uid'];
+   
     ?>
     <tr> <th colspan=7><h2><?php echo $i; ?>.Sender<h2></th>
 </tr>
@@ -125,7 +125,6 @@ while ($row = $request->fetch_assoc()) {
         <th> Email</th>
         <th> Phone</th>
         <th> Address</th>
-        <th> Geo-Location</th>
         <th> weight</th>
         
         
@@ -134,44 +133,37 @@ while ($row = $request->fetch_assoc()) {
        
      
         <td><?php echo $row['date']; ?></td>
-        <td><?php echo $row['sname']; ?></td>
-        <td><?php echo $row['semail']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
-        <td><?php echo $row['saddress']; ?></td>
-        <td><?php echo $row['slocation']; ?></td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['email']; ?></td>
+        <td><?php echo $row['phone']; ?></td>
+        <td><?php echo $row['address']; ?></td>
+        
         <td><?php echo $row['weight']; ?>kg</td>
        
 
 </tr>
-<tr> <th colspan=7><h2>Receiver<h2></th>
+<tr> 
+    <th colspan=7><h2>Receiver<h2></th>
 </tr>
 <tr>
-
-<th> Image</th>
-<th> Name</th>
-        <th> Email</th>
-        <th> Phone</th>
-        <th> Address</th>
-        <th> Location</th>
-      
-        
-<th> Action</th>
+    <th> Image</th>
+    <th> Name</th>
+    <th> Email</th>
+    <th> Phone</th>
+    <th> Address</th>
+    <th> Action</th>
 </tr>
 <tr>
-<td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
-
-<td><?php echo $row['rname']; ?></td>
-        <td><?php echo $row['semail']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
-        <td><?php echo $row['raddress']; ?></td>
-        <td><?php echo $row['rlocation']; ?></td>
-        
-
-        <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=accept&uid=<?php echo $row['id'] ;?>&sid=<?php echo $sid ; ?>><i class="fa-2x fa-regular fa-circle-check"></i></a>
-
+    <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
+    <td><?php echo $row['rname']; ?></td>
+    <td><?php echo $row['remail']; ?></td>
+    <td><?php echo $row['rphone']; ?></td>
+    <td><?php echo $row['raddress']; ?></td>
+    <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=accept&uid=<?php echo $row['oid'] ;?>&sid=<?php echo $sid ; ?>><i class="fa-2x fa-regular fa-circle-check"></i></a>
 </tr>
 <?php
-}
+    }
+
 ?>
 </div>
 </table>

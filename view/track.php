@@ -69,28 +69,28 @@ if($request)
 <table style=text-align:center>
    <tr>
    <th>S.N</th>
-        <th> Name</th>
-        <th> Address</th>
+        <th> Order Name</th>
+        <th> To-</th>
         <th> Phone</th>
-        <th> Name</th>
         <th> Address</th>
+        
         <th> Weight</th>
         <th> Product Image</th>
 <th> Status</th>
         
 </tr><?php
-if($row = $request->fetch_assoc()) {
+while($row = $request->fetch_assoc()) {
     $i++;
     $uid= $row['uid'];
     ?>
     <tr>
        
         <td><?php echo $i; ?></td>
-        <td><?php echo $row['sname']; ?></td>
-        <td><?php echo $row['saddress']; ?></td>
-        <td><?php echo $row['sphone']; ?></td>
+        <td><?php echo $row['ordername']; ?></td>
         <td><?php echo $row['rname']; ?></td>
+        <td><?php echo $row['rphone']; ?></td>
         <td><?php echo $row['raddress']; ?></td>
+        
         <td><?php echo $row['weight']; ?>kg</td>
         <td> <img src="<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td>
 
@@ -135,13 +135,6 @@ switch($row['status']) {
 
 </tr>
 <?php
-}
-else {?>
-    <tr>
-    <th>NO data found</th>
-         
- </tr><?php
-    
 }
 
 ?>

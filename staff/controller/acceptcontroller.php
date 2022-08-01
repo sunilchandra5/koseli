@@ -16,13 +16,13 @@ $accept= accept($sid,$uid);
 if($accept)
 {
    
-   redirect(adminrequest);
+   redirect('adminrequest');
 }
 else
 {
     $_SESSION['message']="Data is not approved";
     
     $_SESSION['status']="error";
-    redirect(adminrequest);
+    redirect('adminrequest');
 }
 

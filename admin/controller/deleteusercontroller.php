@@ -1,5 +1,5 @@
 <html>
-    <head><title>hello</title>
+    <head><title>delete</title>
     
 
 
@@ -14,7 +14,7 @@ if(isset($_GET["id"]))
 	$id = $_GET["id"];
 }
 
-$del = delete($id);
+$del = deleteuser($id);
 if($del)
 {
     $_SESSION['message']="Data deleted successfully";

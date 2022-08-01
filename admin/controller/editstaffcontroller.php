@@ -81,7 +81,7 @@ if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
    if ($user) {
     $_SESSION['message']="Staff update successfully";
     $_SESSION['status']="success";
-    include 'view/staff.php';
+    redirect('staff');
    } else {
        throwError(500, 'Unable to complete your request.');
    }

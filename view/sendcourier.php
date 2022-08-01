@@ -61,9 +61,6 @@ input[type="file"] {
 </head>
 
 <body>
-<?php
-echo $_SESSION['user']['saddress'] ;
-?>
 
 
     <div class="trans">
@@ -97,28 +94,28 @@ echo $_SESSION['user']['saddress'] ;
                 </tr>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" name="sname" value="<?php echo $_SESSION['user']['sname'] ; ?>" readonly></td>
+                    <td><input type="text" value="<?php echo $_SESSION['user']['sname'] ; ?>" readonly></td>
 
                     <td>Name:</td>
                     <td><input type="text" name="rname" placeholder="Receiver FullName" required></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" name="semail" value="<?php echo $_SESSION['user']['semail'] ; ?>" readonly></td>
+                    <td><input type="text" value="<?php echo $_SESSION['user']['semail'] ; ?>" readonly></td>
 
                     <td>Email:</td>
                     <td><input type="text" name="remail" placeholder="Receiver Email" required></td>
                 </tr>
                 <tr>
                     <td>PhoneNo.:</td>
-                    <td><input type="number" name="sphone" value="<?php echo $_SESSION['user']['sphone'] ; ?>" readonly></td>
+                    <td><input type="number" value="<?php echo $_SESSION['user']['sphone'] ; ?>" readonly></td>
 
                     <td>PhoneNo.:</td>
                     <td><input type="text" maxlength="10" name="rphone" placeholder="Receiver number" required></td>
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td><input type="text" name="saddress" value="<?php echo $_SESSION['user']['saddress'] ; ?>" readonly></td>
+                    <td><input type="text" value="<?php echo $_SESSION['user']['saddress'] ; ?>" readonly></td>
 
                     <td>Address:</td>
                     <td><input type="text" name="raddress" placeholder="Receiver address" required></td>
@@ -140,7 +137,8 @@ echo $_SESSION['user']['saddress'] ;
     <td><input type="file" name="simg"></td>
     </tr>
     <tr>
-        <td colspan="4" align="center"><input type="submit" name="submit" value="Place Order" style="background-color: orange; border-radius: 15px; width: 140px; height: 50px;cursor:pointer;"></td>
+        <td colspan="4" align="center">
+            <input type="submit" name="submit" value="Place Order" style="background-color: orange; border-radius: 15px; width: 140px; height: 50px;cursor:pointer;" onclick="return confirm('Are you sure you want to continue?')"></td>
     </tr>
     </table>
 

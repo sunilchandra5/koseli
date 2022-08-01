@@ -204,7 +204,7 @@ form .button input:hover {
                     <input type="submit" value="Edit">
                 </div>
             </form>
-       <?php }} ?> 
+    <?php    }} ?>
         </div>
     </div>
 
