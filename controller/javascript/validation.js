@@ -1,6 +1,6 @@
 function validation() {
     var name = document.forms["form"]["name"].value;
-    var nameformat = /^[a-zA-z]+([\s]+z[a-zA-Z]+)*$/;
+    var nameformat = /^[a-zA-Z\s]*$/;
     if (name.trim() == "") {
         document.getElementById('nerror').innerHTML = "Name required";
         return false;

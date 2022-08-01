@@ -86,7 +86,13 @@ if($request)
 ?>
 <table style=text-align:center>
    <tr>
-   <th>S.N</th>
+    
+    <th colspan='3'>Sender</th>
+    <th colspan='3'>Receiver</th>
+</tr>
+   <tr>
+        <th> Product Name</th>
+        <th> Product Image</th>
         <th> Name</th>
         <th> Address</th>
         <th> Phone</th>

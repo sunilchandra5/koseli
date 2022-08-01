@@ -31,8 +31,8 @@ try
     $name = filtertext($_POST['name']);
 
        
-if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
-    $_SESSION['message']="Name doesnot have numbers in them";
+if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
+    $_SESSION['message']="invalid name";
         $_SESSION['status']="warning";
          include 'view/registration.php';
          return;
