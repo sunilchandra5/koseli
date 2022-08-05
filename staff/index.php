@@ -17,33 +17,33 @@ if (isset($_GET['r'])) {
             include 'controller/homeController.php';
             break;
         case 'adminrequest':
-                $_SESSION['active_url'] = 'adminrequest';
-                include 'controller/requestcontroller.php';
-                break;
+            $_SESSION['active_url'] = 'adminrequest';
+            include 'controller/requestcontroller.php';
+            break;
          case 'order':
-                    $_SESSION['active_url'] = 'order';
-                    include 'controller/ordercontroller.php';
-                    break;
+            $_SESSION['active_url'] = 'order';
+            include 'controller/ordercontroller.php';
+            break;
          case 'notification':
-                        $_SESSION['active_url'] = 'notification';
-                        include 'controller/notificationcontroller.php';
-                        break;
+            $_SESSION['active_url'] = 'notification';
+            include 'controller/notificationcontroller.php';
+            break;
         case 'accept':
-                            $_SESSION['active_url'] = 'accept';
-                            include 'controller/acceptcontroller.php';
-                            break;
+            $_SESSION['active_url'] = 'accept';
+            include 'controller/acceptcontroller.php';
+            break;
          case 'deliver':
-                                $_SESSION['active_url'] = 'deliver';
-                                include 'controller/deliveredcontroller.php';
-                                break;
+            $_SESSION['active_url'] = 'deliver';
+            include 'controller/deliveredcontroller.php';
+            break;
          case 'delete':
-                                    $_SESSION['active_url'] = 'delete';
-                                    include 'controller/deletecontroller.php';
-                                    break;
+            $_SESSION['active_url'] = 'delete';
+            include 'controller/deletecontroller.php';
+            break;
          case 'logout':
-                            $_SESSION['active_url'] = 'logout';
-                            include 'controller/logoutcontroller.php';
-                            break;
+            $_SESSION['active_url'] = 'logout';
+            include 'controller/logoutcontroller.php';
+            break;
  
         default :
             throwError(404, 'Requested page does not exists.');

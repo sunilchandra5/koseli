@@ -57,7 +57,7 @@
 
 
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="javascript/sweetalert.js"></script>
    <?php
  if(isset($_SESSION['message'])&& $_SESSION['message'] !='')
  {

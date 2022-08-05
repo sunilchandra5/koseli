@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2022 at 06:15 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Aug 01, 2022 at 09:37 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,19 +31,15 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `address` varchar(30) NOT NULL,
-  `gender` varchar(6) NOT NULL
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `username`, `password`, `email`, `phone`, `address`, `gender`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin@gmail.com', '9845649045', 'parsa', 'male');
+INSERT INTO `admin` (`id`, `name`, `username`, `password`) VALUES
+(1, 'admin', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -52,11 +48,11 @@ INSERT INTO `admin` (`id`, `name`, `username`, `password`, `email`, `phone`, `ad
 --
 
 CREATE TABLE `courier` (
-  `id` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
   `uid` int(255) NOT NULL,
   `sid` int(255) NOT NULL DEFAULT 0,
   `ordername` text NOT NULL,
-  `rname` varchar(20) NOT NULL,
+  `rname` text NOT NULL,
   `remail` varchar(30) NOT NULL,
   `rphone` varchar(10) NOT NULL,
   `raddress` varchar(20) NOT NULL,
@@ -65,6 +61,13 @@ CREATE TABLE `courier` (
   `image` text NOT NULL,
   `status` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courier`
+--
+
+INSERT INTO `courier` (`oid`, `uid`, `sid`, `ordername`, `rname`, `remail`, `rphone`, `raddress`, `weight`, `date`, `image`, `status`) VALUES
+(110, 51, 0, 'sslepathako', 'name', 'abc@gmail.com', '9856421354', 'parsa', 2, '08/17/2022', 'images/vanilla-buttercream-birthday-cake-happy-birthdayjpg.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -88,8 +91,9 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `name`, `username`, `password`, `email`, `phone`, `address`, `gender`) VALUES
-(1, 'staffkhanal', 'staff1', '11111111', 'staff1@gmai.com', '9845649045', 'tandi', 'Female'),
-(2, 'staff', 'staff2', '11111111', 'staff2@gmail.com', '9845694366', 'parsa', 'Female');
+(1, 'staffkhanal', 'staff1', '11111111', 'staff1@gmai.comm', '9845649045', 'tandiiw', 'Male'),
+(3, 'stafff', 'staff2', '11111111', 'staff2@gmail.com', '4563214568', 'parsa', 'Female'),
+(4, 'nayastaff', 'staff2', '11111111', 'rohssan@gmail.com', '7543215689', 'khairahani', 'Male');
 
 -- --------------------------------------------------------
 
@@ -113,9 +117,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `email`, `phone`, `address`, `gender`) VALUES
-(28, 'staff', 'staff1', '111111111', 'ramesh@gmail.com', '985456677', 'parsa', 'Male'),
 (50, 'user', 'user1', '11111111', 'user1@gmail.com', '9864654145', 'gawai', 'Male'),
-(51, 'roshankarki', 'ss', 'aaaaaaaa', 'rohsan@gmail.com', '7543215689', 'khairahani', 'Male');
+(51, 'roshankarkiw', 'ss', 'aaaaaaaa', 'rohsan@gmail.com', '7543215689', 'khairahani', 'Male');
 
 --
 -- Indexes for dumped tables
@@ -131,9 +134,8 @@ ALTER TABLE `admin`
 -- Indexes for table `courier`
 --
 ALTER TABLE `courier`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid` (`uid`),
-  ADD KEY `sid` (`sid`);
+  ADD PRIMARY KEY (`oid`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `staff`
@@ -161,19 +163,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `courier`
 --
 ALTER TABLE `courier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables
@@ -183,8 +185,7 @@ ALTER TABLE `user`
 -- Constraints for table `courier`
 --
 ALTER TABLE `courier`
-  ADD CONSTRAINT `courier_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `staff` (`id`),
-  ADD CONSTRAINT `courier_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `courier_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
