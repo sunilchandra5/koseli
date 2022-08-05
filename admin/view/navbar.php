@@ -84,18 +84,13 @@
                             <span>Users</span></a>
                     </li>
                  
-                   <!-- <li>
-                        <a href="<?= $base_url ?>?r=notification"><span class="icon">
-                                <ion-icon name="notifications-circle-sharp"></ion-icon>
-                            </span>
-                            <span>Notification</span></a>
-                    </li>   -->
                     <li>
-                        <a href="<?= $base_url ?>?r=bin"><span class="icon">
-                        <ion-icon name="trash-bin"></ion-icon>
+                        <a href="<?= $base_url ?>?r=completeorder"><span class="icon">
+                        <ion-icon name="document-text-sharp"></ion-icon>
                             </span>
-                            <span>Bin</span></a>
-                    </li>
+                            <span>All Orders</span></a>
+                    </li>   
+                  
                     <li>
                         <a href="<?= $base_url ?>?r=logout"><span class="icon">
                                 <ion-icon name="log-out-sharp"></ion-icon>

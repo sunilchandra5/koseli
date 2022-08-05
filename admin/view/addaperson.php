@@ -157,6 +157,116 @@ form .button input:hover {
   ?>
   
 
+
+
+
+  <script type="text/javascript" >
+        function check() {
+            var len = document.form.password.value.length;
+            if (len > 7){
+                document.getElementById("perror").innerHTML ="";
+            } 
+            else {
+                document.getElementById("perror").innerHTML ="Poor";
+            }
+        }
+        function name_validate() {
+    var name = document.forms["form"]["name"].value;
+    var nameformat = /^[a-zA-Z\s]*$/;
+    if (name.trim() == "") {
+        document.getElementById('nerror').innerHTML = "Name required";
+        
+    } else if (!nameformat.test(name)) {
+        document.getElementById('nerror').innerHTML = "Name only contain alphabates";
+        
+    } else {
+        document.getElementById('nerror').innerHTML = "";
+       
+    }
+
+}
+
+function username_validate(){
+    var uname = document.forms["form"]["username"].value;
+    if (uname.trim() == "") {
+        document.getElementById('uerror').innerHTML = "UserName required";
+       
+    } else {
+        document.getElementById('uerror').innerHTML = "";
+        
+    }
+}
+
+function password_validate(){
+    var pass = document.forms["form"]["password"].value;
+    var cpass = document.forms["form"]["confirmpassword"].value;
+    if (cpass != pass) {
+        document.getElementById('cerror').innerHTML = "Password not matched";
+       
+    } else {
+        document.getElementById('cerror').innerHTML = "";
+       
+    }
+}
+
+function email_validate(){
+    var email = document.forms["form"]["email"].value;
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.trim() == "") {
+        document.getElementById('eerror').innerHTML = "Email required";
+       
+    } else if (!mailformat.test(email)) {
+        document.getElementById('eerror').innerHTML = "Email is not valid";
+       
+    } else {
+        document.getElementById('eerror').innerHTML = "";
+       
+    }
+}
+function phone_validate(){
+    var phone = document.forms["form"]["phone"].value;
+    var phoneformat = /^([8-9]{2})*([0-9]{8})*$/;
+    if (phone.trim() == "") {
+        document.getElementById('pherror').innerHTML = "Phone number requiered";
+       
+    }
+    if (!phoneformat.test(phone)) {
+        document.getElementById('pherror').innerHTML = "starts with 98-- and exact 10 digts";
+      
+
+    } else {
+        document.getElementById('pherror').innerHTML = "";
+        
+    }
+}
+
+
+function address_validate(){
+    var address = document.forms["form"]["address"].value;
+    if (address.trim() == "") {
+        document.getElementById('adderror').innerHTML = "Address required";
+      
+    } else {
+        document.getElementById('adderror').innerHTML = "";
+       
+    }
+}
+        </script>
+
+        <!--end of validation-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -166,35 +276,42 @@ form .button input:hover {
 
         <div class="title">Add a Delivery Person</div>
         <div class="content">
-            <form action="<?= $base_url ?>?r=addperson" method="POST">
+            <form action="<?= $base_url ?>?r=addperson" method="POST" name="form">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Full Name</span>
-                        <input type="text" name="name" placeholder="person name" required>
+                        <span id='nerror' style="color: red;"></span>
+                        <input type="text" name="name" placeholder="person name" value="<?php echo isset($_POST['name'])? $_POST['name']:''; ?>" oninput="name_validate();">
                     </div>
                     <div class="input-box">
                         <span class="details">Username</span>
-                        <input type="text" name="username" placeholder="person username" required>
+                        <span id='uerror' style="color: red;"></span>
+                        <input type="text" name="username" placeholder="person username" value="<?php echo isset($_POST['username'])? $_POST['username']:''; ?>" oninput="username_validate();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="password" name="password" placeholder="person password" required>
+                        <span id='perror' style="color: red;"></span>
+                        <input type="password" name="password" placeholder="person password" value="<?php echo isset($_POST['password'])? $_POST['password']:''; ?>" oninput="check();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Confirm Password</span>
-                        <input type="password" name="confirmpassword" placeholder="Confirm password" required>
+                        <span id='cerror' style="color: red;"></span>
+                        <input type="password" name="confirmpassword" placeholder="Confirm password" value="<?php echo isset($_POST['confirmpassword'])? $_POST['confirmpassword']:''; ?>" oninput="password_validate();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" name="email" placeholder="person's email" required>
+                        <span id='eerror' style="color: red;"></span>
+                        <input type="text" name="email" placeholder="person's email" value="<?php echo isset($_POST['email'])? $_POST['email']:''; ?>" oninput="email_validate();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Phone Number</span>
-                        <input type="text" name="phone" maxlength="10" placeholder="person's number" required>
+                        <span id='pherror' style="color: red;"></span>
+                        <input type="text" name="phone" maxlength="10" placeholder="person's number" value="<?php echo isset($_POST['phone'])? $_POST['phone']:''; ?>"  oninput="phone_validate();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <input type="text" name="address" placeholder="person address" required>
+                        <span id='aerror' style="color: red;"></span>
+                        <input type="text" name="address" placeholder="person address" value="<?php echo isset($_POST['address'])? $_POST['address']:''; ?>" oninput="address_validate();"required>
                     </div>
                     <div class="input-box">
                         <span class="details">Gender</span>

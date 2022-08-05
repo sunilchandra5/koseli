@@ -35,10 +35,6 @@ if (isset($_GET['r'])) {
          case 'notification':
             $_SESSION['active_url'] = 'notification';
             include 'controller/notificationcontroller.php';
-            break;  
-         case 'bin':
-            $_SESSION['active_url'] = 'notification';
-            include 'controller/bincontroller.php';
             break;                
           case 'logout':
             $_SESSION['active_url'] = 'logout';
@@ -68,13 +64,17 @@ if (isset($_GET['r'])) {
             $_SESSION['active_url'] = 'reject';
             include 'controller/rejectcontroller.php';
             break;
-         case 'delete':
-            $_SESSION['active_url'] = 'delete';
-            include 'controller/deletecontroller.php';
-            break;
         case 'sender':
             $_SESSION['active_url'] = 'sender';
             include 'controller/sendercontroller.php';
+            break;
+        case 'completeorder':
+            $_SESSION['active_url'] = 'completeorder';
+            include 'controller/completecontroller.php';
+            break;
+        case 'approvestaff':
+            $_SESSION['active_url'] = 'approvestaff';
+            include 'controller/approvestaffcontroller.php';
             break;
         default :
             throwError(404, 'Requested page does not exists.');

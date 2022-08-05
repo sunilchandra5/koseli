@@ -10,8 +10,6 @@ if(isset($_GET["uid"]))
 $accept= reject($uid);
 if($accept)
 {
-    $_SESSION['message']="Rejected Check in Bin";
-    $_SESSION['status']="success";
     redirect("request");
 }
 else

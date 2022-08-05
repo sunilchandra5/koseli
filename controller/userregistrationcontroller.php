@@ -28,7 +28,7 @@ try
         return;
     }
 
-    $name = filtertext($_POST['name']);
+    $name = nospace($_POST['name']);
 
        
 if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
@@ -49,6 +49,7 @@ if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
      }
 
    //checking password.
+   
    // for encript eg:-$password = sha1($_POST['pass']);
    $cpassword = filtertext($_POST['confirmpassword']);
    if ($password != $cpassword) {
@@ -58,12 +59,7 @@ if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
        return;
    }
    $phone = filtertext($_POST['phone']);
-   if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
-    $_SESSION['message']="Phone number invalid";
-        $_SESSION['status']="warning";
-         include 'view/registration.php';
-         return;
-    }
+
 
    
 

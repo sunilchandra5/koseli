@@ -85,35 +85,37 @@ tr:hover {
 
     <div class="box">
     <?php
+    $i=0;
     $request = view_courier();
 if($request)
-   
+ 
 ?>
 <table style=text-align:center>
    <tr>
-   <th> Order_Id</th>
+   <th> S.N</th>
         <th> Order Name</th>
         <th> To-</th>
         <th> Phone</th>
         <th> Weight</th>
-        <th> Sender<br>Details</th>
+        <th> Sender</th>
         <th> Image</th>
         <th> Action</th>
         
 </tr><?php
 while ($row = $request->fetch_assoc()) {
   
+    $i++;
     $uid= $row['oid'];
     ?>
     <tr>
        
-    <td><?php echo $row['oid']; ?></td>
+    <td><?php echo $i; ?></td>
         <td><?php echo $row['ordername']; ?></td>
         
         <td><?php echo $row['rname']; ?></td>
         <td><?php echo $row['rphone']; ?></td>
         <td><?php echo $row['weight']  ; ?>KG</td>
-        <td><a style="color:black" href="<?php echo $base_url; ?>?r=sender&uid=<?php echo $row['id']; ?>"> Sender.. </a></td>
+        <td><a style="color:black" href="<?php echo $base_url; ?>?r=sender&uid=<?php echo $row['id']; ?>"> <button>Details</button></a></td>
         
         <td> <img src="../<?php echo $row['image']; ?>" alt="pic" style="max-width: 100px;"/> </td> 
         <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=accept&uid=<?php echo $uid; ?>><i class="fa-2x fa-solid fa-user-check"></i></a><br><br>

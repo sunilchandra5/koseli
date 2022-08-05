@@ -44,9 +44,11 @@ $new=update_password($newpassword,$email);
 if ($new) {
     $_SESSION['message']="Password changed sucessfully";
     $_SESSION['status']="success";
-      redirect(login);
+    unset($_SESSION['email']);
+      redirect('login');
    } else {
        throwError(500, 'Unable to complete your request.');
+       unset($_SESSION['email']);
    }
     } catch (Exception $ex) {
         include 'controller/ErrorController.php';

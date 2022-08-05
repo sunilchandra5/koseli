@@ -152,8 +152,12 @@ form .button input:hover {
             while ($row = $sender->fetch_assoc()) {
             
         ?>
-            <form action="<?php echo $base_url; ?>?r=edituser&id=<?php echo $id; ?>" method="POST">
+           
                 <div class="user-details">
+                <div class="input-box">
+                        <span class="details">User ID</span>
+                        <input type="text" name="name" value=<?php echo $row['id'] ?> readonly>
+                    </div>
                     <div class="input-box">
                         <span class="details">Full Name</span>
                         <input type="text" name="name" value=<?php echo $row['name'] ?> readonly>
@@ -162,15 +166,6 @@ form .button input:hover {
                         <span class="details">Username</span>
                         <input type="text" name="username" value=<?php echo $row['username'] ?> readonly>
                     </div>
-                    <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="text" name="password" value=<?php echo $row['password'] ?> readonly>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="text" name="confirmpassword" value=<?php echo $row['password'] ?> readonly>
-                    </div>
-                    
                     <div class="input-box">
                         <span class="details">Email</span>
                         <input type="text" name="email" value=<?php echo $row['email'] ?> readonly>

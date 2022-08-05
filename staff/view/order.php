@@ -128,8 +128,7 @@ while ($row = $request->fetch_assoc()) {
                                 <?php
                                 } else {
                                     ?>							
-                                <td bgcolor=#d6491e >  <a style=color: white href=<?php echo $base_url; ?>?r=delete&id=<?php echo $row['oid'] ?>>Delete<i class="fa-2x fa-regular fa-circle-check"></i></a>
-</td>
+                                <td bgcolor=#d6491e color='white' > Thank you! </td>
 							<?php
                                 } ?>
 

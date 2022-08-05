@@ -17,10 +17,10 @@ function db_connect() {
 
 
  
-function find_user_by_username($email)
+function find_staff_by_username($username)
 {
     $conn= db_connect();
-    $sql = "SELECT * FROM staff where email='$email' limit 1";
+    $sql = "SELECT * FROM staff where username='$username' limit 2";
     $result = $conn->query($sql);
     $conn->close();
     if ($result->num_rows > 0) {
@@ -29,6 +29,20 @@ function find_user_by_username($email)
         return false;
     }
 }
+
+function find_staff_by_email($email)
+{
+    $conn= db_connect();
+    $sql = "SELECT * FROM staff where email='$email' limit 2";
+    $result = $conn->query($sql);
+    $conn->close();
+    if ($result->num_rows > 0) {
+        return $result;
+    } else {
+        return false;
+    }
+}
+
 
 function register_new_staff($name, $username, $password, $email,$phone, $address,$gender)
 {
@@ -107,6 +121,23 @@ else
 
 }
 
+function view_order()
+{
+$conn = db_connect();
+$sql = "SELECT * from courier INNER JOIN user ON courier.uid=user.id ";
+$result = $conn->query($sql);
+$conn->close();
+if($result)
+{
+    return $result;
+}
+else
+{
+    return false;
+}
+
+}
+
 
 
 function deletestaff($id) {
@@ -168,41 +199,6 @@ else {
         return false;
 }
 
-}
-
-
-
-function view_reject()
-{
-$conn = db_connect();
-$sql = "SELECT * from courier WHERE status='2'";
-$result = $conn->query($sql);
-$conn->close();
-if($result)
-{
-    return $result;
-}
-else
-{
-    return false;
-}
-
-}
-
-
-
-
-function delete_courier($id) {
-    $conn = db_connect();
-    $sql = "Delete from courier where oid=$id";
-    $conn->query($sql);
-    if ($conn->affected_rows > 0) {
-        $conn->close();
-        return TRUE;
-    } else {
-        $conn->close();
-        return false;
-    }
 }
 
 
@@ -302,6 +298,22 @@ else
 }
 
 
+function acceptstaff($id)
+{
+$conn = db_connect();
+$sql = "SELECT * from staff where id='$id'";
+$result = $conn->query($sql);
+$conn->close();
+if($result)
+{
+    return $result;
+}
+else
+{
+    return false;
+}
+
+}
 
 
 

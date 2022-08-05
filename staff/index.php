@@ -12,11 +12,11 @@ include 'helper/RouteHelper.php';
 if (isset($_GET['r'])) {
     $controller = $_GET['r'];
     switch ($controller) {
-        case 'home':
+         case 'home':
             $_SESSION['active_url'] = 'home';
             include 'controller/homeController.php';
             break;
-        case 'adminrequest':
+         case 'adminrequest':
             $_SESSION['active_url'] = 'adminrequest';
             include 'controller/requestcontroller.php';
             break;
@@ -28,17 +28,13 @@ if (isset($_GET['r'])) {
             $_SESSION['active_url'] = 'notification';
             include 'controller/notificationcontroller.php';
             break;
-        case 'accept':
+         case 'accept':
             $_SESSION['active_url'] = 'accept';
             include 'controller/acceptcontroller.php';
             break;
          case 'deliver':
             $_SESSION['active_url'] = 'deliver';
             include 'controller/deliveredcontroller.php';
-            break;
-         case 'delete':
-            $_SESSION['active_url'] = 'delete';
-            include 'controller/deletecontroller.php';
             break;
          case 'logout':
             $_SESSION['active_url'] = 'logout';

@@ -38,14 +38,7 @@ try
 
      //checking if username is already exists.
      $username= filtertext($_POST['username']);
-     $valudate=find_user_by_username($username);
-     if ($valudate){
-        $_SESSION['message']="user already taken";
-        $_SESSION['status']="error";
-         include 'view/staff.php';
-         return;
-     }
-
+  
    //checking password.
    $cpassword = filtertext($_POST['confirmpassword']);
    if ($password != $cpassword) {
@@ -54,17 +47,17 @@ try
        include 'view/staff.php';
        return;
    }
-   $name = filterText($_POST['name']);
+   $name = nospace($_POST['name']);
           
-if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
+if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
     $_SESSION['message']="Name doesnot have numbers in them";
         $_SESSION['status']="warning";
          include 'view/staff.php';
          return;
     }
-   $email =filterText($_POST['email']);
-   $address = filterText($_POST['address']);
-   $phone = filterText($_POST['phone']);
+   $email =filtertext($_POST['email']);
+   $address = filtertext($_POST['address']);
+   $phone = filtertext($_POST['phone']);
    if (strlen($phone) < 10 || strlen($phone) > 10) 
    {
     $_SESSION['message']="Phone number must be 10 character";
@@ -74,7 +67,7 @@ if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
 }
    
 
-   $gender= filterText($_POST['gender']);
+   $gender= filtertext($_POST['gender']);
  
 
    $user = updateusers($id, $name, $username, $password, $email,$phone, $address,$gender);

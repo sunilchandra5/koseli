@@ -10,7 +10,7 @@ try
 {  
    $ordername = filterText($_POST['ordername']);
    $weight =filterText($_POST['weight']);
-   $rname = filterText($_POST['rname']);
+   $rname = nospace($_POST['rname']);
    $remail =filterText($_POST['remail']);
    $rphone =filterText($_POST['rphone']);
    $raddress = filterText($_POST['raddress']);

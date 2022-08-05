@@ -30,7 +30,7 @@ try
 
      //checking if username is already exists.
      $username= filtertext($_POST['username']);
-     $valudate=find_user_by_username($username);
+     $valudate=find_staff_by_username($username);
      if ($valudate){
         $_SESSION['message']="user already taken";
         $_SESSION['status']="error";
@@ -46,15 +46,26 @@ try
        include 'view/addaperson.php';
        return;
    }
-   $name = filterText($_POST['name']);
+   $name =$_POST['name'];
           
-if(!preg_match ('/^([a-zA-Z]+)$/', $name)){
+if(!preg_match ('/^([a-zA-Z\s]+)$/', $name)){
     $_SESSION['message']="Name doesnot have numbers in them";
         $_SESSION['status']="warning";
          include 'view/addaperson.php';
          return;
     }
    $email =filterText($_POST['email']);
+   $email_validate=find_staff_by_email($email);
+   if ($email_validate){
+      $_SESSION['message']="email already taken";
+      $_SESSION['status']="error";
+       include 'view/addaperson.php';
+       return;
+   }
+
+
+
+
    $address = filterText($_POST['address']);
    $phone = filterText($_POST['phone']);
    if (strlen($phone) < 10 || strlen($phone) > 10) 

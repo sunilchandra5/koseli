@@ -21,6 +21,9 @@
         if($password){
             while ($row = $password->fetch_assoc()) {
             ?>
+             <p>Name</p>
+            <input type="email" name="email" value=<?php echo $row['name'] ?> readonly>
+
             <p>Email</p>
             <input type="email" name="email" value=<?php echo $row['email'] ?> readonly>
             <p>New Password</p>
