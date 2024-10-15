@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $base_url = 'http://localhost/college-project/';
@@ -9,9 +8,10 @@ include 'helper/ErrorHelper.php';
 include 'helper/RouteHelper.php';
 
 
-
-
-if (isset($_GET['r'])) {
+if (isset($_GET['data'])) {
+    $_SESSION['active_url'] = 'esewa';
+    include 'controller/esewapmntresponsecontroller.php';
+} else if (isset($_GET['r'])) {
     $controller = $_GET['r'];
     switch ($controller) {
         case 'login':
@@ -26,37 +26,41 @@ if (isset($_GET['r'])) {
             $_SESSION['active_url'] = 'newpass';
             include 'controller/newpasscontroller.php';
             break;
-         case 'newreg':
+        case 'newreg':
             $_SESSION['active_url'] = 'newreg';
             include 'controller/userregistrationcontroller.php';
             break;
-         case 'sendcourier':
+        case 'sendcourier':
             $_SESSION['active_url'] = 'sendcourier';
             include 'controller/sendcouriercontroller.php';
             break;
-         case 'price':
+        case 'price':
             $_SESSION['active_url'] = 'price';
             include 'controller/pricecontroller.php';
             break;
-         
-         case 'track':
+
+        case 'track':
             $_SESSION['active_url'] = 'track';
             include 'controller/trackcontroller.php';
             break;
         case 'contact':
-            $_SESSION['active_url'] = 'contact' ;
+            $_SESSION['active_url'] = 'contact';
             include 'controller/contactcontroller.php';
             break;
-         case 'logout':
+        case 'courierdetail':
+            $_SESSION['active_url'] = 'courierdetail';
+            include 'controller/courierdetailcontroller.php';
+            break;
+        case 'logout':
             $_SESSION['active_url'] = 'logout';
             include 'controller/logoutcontroller.php';
             break;
-          case 'site':
-            $_SESSION['active_url'] = 'site' ;
+        case 'site':
+            $_SESSION['active_url'] = 'site';
             include 'controller/userhomecontroller.php';
             break;
-    
-        default :
+
+        default:
             throwError(404, 'Requested page does not exists.');
             break;
     }

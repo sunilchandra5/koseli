@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2022 at 09:37 AM
+-- Generation Time: Aug 05, 2022 at 04:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,7 +39,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `username`, `password`) VALUES
-(1, 'admin', 'admin', 'admin');
+(1, 'admin', 'admin', 'admin'),
+(2, 'Agraj Adhikari', 'agraj', 'agraj123'),
+(3, 'Roshan Karki', 'roshan', 'roshan123');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,13 @@ CREATE TABLE `courier` (
 --
 
 INSERT INTO `courier` (`oid`, `uid`, `sid`, `ordername`, `rname`, `remail`, `rphone`, `raddress`, `weight`, `date`, `image`, `status`) VALUES
-(110, 51, 0, 'sslepathako', 'name', 'abc@gmail.com', '9856421354', 'parsa', 2, '08/17/2022', 'images/vanilla-buttercream-birthday-cake-happy-birthdayjpg.jpg', 0);
+(1, 1, 0, 'Car', 'Roshan Karki', 'roshan@gmail.com', '9845649085', 'Kumroj', 1, '08/10/2022', 'images/acura_PNG129.png', 2),
+(2, 5, 2, 'Meat', 'Sabik Bhandari', 'sabik@gmail.com', '9856421354', 'Tandi', 4, '08/23/2022', 'images/deal-img2.png', 4),
+(3, 4, 1, 'Vegitables', 'Sanish Poudel', 'sanish@gmail.com', '9874563214', 'Sauraha', 2, '08/08/2022', 'images/home-img.png', 4),
+(4, 2, 1, 'Apples', 'Purshuttom Shresth', 'purshuttom@gmail.com', '9874563210', 'Magani', 5, '08/11/2022', 'images/product-7.png', 3),
+(5, 6, 0, 'Letter', 'Puspa Silwal', 'puspa@gmail.com', '9874563214', 'Bharatpur', 1, '08/17/2022', 'images/newsletter-bg.jpg', 0),
+(6, 3, 0, 'Almod', 'Subash Shrestha', 'subash@gmail.com', '9874563214', 'Kathmandu', 2, '08/11/2022', 'images/product-6.png', 1),
+(7, 6, 3, 'Documents', 'Sila Nepal', 'sila@gmail.com', '9874563214', 'Lother', 2, '08/06/2022', 'images/download.png', 3);
 
 -- --------------------------------------------------------
 
@@ -91,9 +99,9 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `name`, `username`, `password`, `email`, `phone`, `address`, `gender`) VALUES
-(1, 'staffkhanal', 'staff1', '11111111', 'staff1@gmai.comm', '9845649045', 'tandiiw', 'Male'),
-(3, 'stafff', 'staff2', '11111111', 'staff2@gmail.com', '4563214568', 'parsa', 'Female'),
-(4, 'nayastaff', 'staff2', '11111111', 'rohssan@gmail.com', '7543215689', 'khairahani', 'Male');
+(1, 'Roshan Karki', 'roshan21', '11223344', 'roshan21@gmail.com', '9865354145', 'khairahani-13Gawai', 'Male'),
+(2, 'Sabik Bhandari', 'sabik20', '11223344', 'sabik20@gmail.com', '9845762145', 'Ratnagartandi', 'Male'),
+(3, 'Shristy Thapa', 'shristy23', '11223344', 'shristy23@gmail.com', '9896541235', 'ParsaChitwan', 'Female');
 
 -- --------------------------------------------------------
 
@@ -117,8 +125,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `email`, `phone`, `address`, `gender`) VALUES
-(50, 'user', 'user1', '11111111', 'user1@gmail.com', '9864654145', 'gawai', 'Male'),
-(51, 'roshankarkiw', 'ss', 'aaaaaaaa', 'rohsan@gmail.com', '7543215689', 'khairahani', 'Male');
+(1, 'Diwas Basnet', 'diwas21', '11112222', 'diwas21@gmail.com', '9874563214', 'khairahani-13Gawai', 'Male'),
+(2, 'Sudarshan Uprety', 'sudarshan22', '11112222', 'sudarshan22@gmail.com', '9874563214', 'Chitwan,Parsa', 'Male'),
+(3, 'Manjesh Rayamahji', 'manjesh23', '11112222', 'manjesh23@gmail.com', '9874563321', 'ParsaChitwan', 'Male'),
+(4, 'Aditiya Adhikari', 'aditiya23', '11112222', 'aditiya23@gmail.com', '9865421365', 'Tandi', 'Male'),
+(5, 'Kumar Chaudhary', 'kumar20', '11112222', 'kumar20@gmail.com', '9874563214', 'Budauli', 'Male'),
+(6, 'Soniya Bartaula', 'soniya21', '11112222', 'soniya21@gmail.com', '9874563214', 'Bhandara', 'Female'),
+(7, 'Kabin Chaudhary', 'kabin20', '11112222', 'kabin20@gmail.com', '9874563214', 'kabin20@gmail.com', 'Male');
 
 --
 -- Indexes for dumped tables
@@ -157,25 +170,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `courier`
 --
 ALTER TABLE `courier`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
