@@ -117,12 +117,12 @@ function register_new_user($name, $username, $password, $email, $phone, $address
 
 
 
-function send_courier($user, $ordername, $rname, $remail, $rphone, $raddress, $weight, $date, $target)
+function send_courier($user, $ordername, $rname, $remail, $rphone, $raddress, $weight, $date, $target, $latitude, $longitude)
 {
 
     $conn = db_connect();
-    $stm = $conn->prepare("INSERT INTO courier (uid,ordername,rname,remail,rphone,raddress,weight,date,image) VALUES (?,?,?,?,?,?,?,?,?)");
-    $stm->bind_param('isssssiss', $user, $ordername, $rname, $remail, $rphone, $raddress, $weight, $date, $target);
+    $stm = $conn->prepare("INSERT INTO courier (uid,ordername,rname,remail,rphone,raddress,weight,date,image, platitude, plongitude) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stm->bind_param('isssssissss', $user, $ordername, $rname, $remail, $rphone, $raddress, $weight, $date, $target, $latitude, $longitude);
     $result = $stm->execute();
     if ($result) {
         $stm->close();

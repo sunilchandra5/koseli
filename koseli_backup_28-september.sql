@@ -61,6 +61,8 @@ CREATE TABLE `courier` (
   `weight` int(2) NOT NULL,
   `date` varchar(255) NOT NULL,
   `image` text NOT NULL,
+  `platitude` varchar(255) NOT NULL,
+  `plongitude` varchar(255) NOT NULL,
   `status` int(2) NOT NULL DEFAULT 0,
   `payment` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

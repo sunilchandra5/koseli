@@ -28,7 +28,23 @@ function view_courier()
     } else {
         return false;
     }
+}
 
+function fetch_couriers_based_on_location($latitude, $longitude, $radius)
+{
+    $conn = db_connect();
+    $sql = "SELECT user.*,courier.*, ( 6371 * acos( cos( radians(?) ) * cos( radians(platitude) ) * cos( radians(plongitude) - radians(?) ) + sin( radians(?) ) * sin( radians(platitude) ) ) ) AS distance FROM courier 
+    INNER JOIN user ON courier.uid = user.id WHERE courier.status = '1' HAVING distance < ? ORDER BY distance;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("dddi", $latitude, $longitude, $latitude, $radius);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $conn->close();
+    if ($result) {
+        return $result;
+    } else {
+        return false;
+    }
 }
 
 
